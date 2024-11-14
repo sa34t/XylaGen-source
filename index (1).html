@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xylagen - Hébergement de Bots Discord</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Animation typewriter */
+        @keyframes typewriter {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Appliquer l'animation au texte */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden; /* Cache le texte excédentaire */
+            white-space: nowrap; /* Empêche le texte de se casser en plusieurs lignes */
+            border-right: 3px solid rgba(255, 255, 255, 0.75); /* Curseur de la machine à écrire */
+            width: 0;
+            animation: typewriter 3s steps(40) 1s forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        /* Animation du curseur de la machine à écrire (clignotement) */
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Animation de fade-in pour les sections */
+        .animate-fade-up {
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Masquer l'élément au départ */
+        .hidden {
+            display: none;
+        }
+
+        /* Animation des cartes de plans (hover effect) */
+        .plan-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation des boutons */
+        .buy-button {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 12px 25px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background-color: #4F46E5;
+            color: white;
+            border-radius: 50px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 300%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease-in-out;
+            transform: translateX(-50%) translateY(-100%);
+        }
+
+        .buy-button:hover::before {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-5px);
+            background-color: #4338CA;
+        }
+
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Header -->
+    <header class="bg-gray-800 p-4">
+        <nav class="flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-white">Xylagen</a>
+            <ul class="flex space-x-6">
+                <li><a href="#services" class="hover:text-blue-400">Services</a></li>
+                <li><a href="#pricing" class="hover:text-blue-400">Tarifs</a></li>
+                <li><a href="#about" class="hover:text-blue-400">À propos</a></li>
+                <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 h-screen text-center">
+        <div class="text-white animate-fade-up">
+            <h1 class="text-5xl font-bold animate-fade-up">
+                Héberge ton Bot Discord avec Xylagen
+            </h1>
+            <!-- Texte animé sous le titre -->
+            <p id="typewriter-text" class="mt-4 text-xl typewriter">Hébergement rapide, sécurisé et optimisé pour tous tes bots Discord.</p>
+            <!-- Section du bouton, placé en bas -->
+            <div class="mt-6 animate-fade-up">
+                <a href="#pricing" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-600 transition">Commencez maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="p-10 bg-gray-800 animate-fade-up">
+        <h2 class="text-3xl font-bold text-center text-white">Nos Services</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Plan Gratuit -->
+            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
+                <h3 class="text-xl font-semibold">Plan Gratuit</h3>
+                <img src="https://media.giphy.com/media/l4FGr3jMdsNxl7Y7W/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
+                <p class="mt-4">Idéal pour les petits bots. Accès limité aux ressources, mais parfait pour débuter.</p>
+                <ul class="mt-4 text-sm">
+                    <li>Bot 24/7</li>
+                    <li>Support de base</li>
+                </ul>
+                <button class="buy-button mt-6">Choisir ce plan</button>
+            </div>
+
+            <!-- Plan Basique -->
+            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
+                <h3 class="text-xl font-semibold">Plan Basique</h3>
+                <img src="https://media.giphy.com/media/3o7btkZz3s5nXzV5Je/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
+                <p class="mt-4">Pour les bots plus puissants avec un meilleur temps de réponse et une gestion simplifiée.</p>
+                <ul class="mt-4 text-sm">
+                    <li>Bot 24/7</li>
+                    <li>Support Prioritaire</li>
+                    <li>Accès API amélioré</li>
+                </ul>
+                <button class="buy-button mt-6">Choisir ce plan</button>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
+                <h3 class="text-xl font-semibold">Plan Premium</h3>
+                <img src="https://media.giphy.com/media/1wxx2L1e3XzJ7AGDJf/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
+                <p class="mt-4">La solution ultime pour des bots à haute performance avec un support 24/7.</p>
+                <ul class="mt-4 text-sm">
+                    <li>Bot 24/7</li>
+                    <li>Support VIP</li>
+                    <li>Serveur dédié</li>
+                    <li>Accès complet aux API</li>
+                </ul>
+                <button class="buy-button mt-6">Choisir ce plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 text-center text-white">
+        <p>&copy; 2024 Xylagen - Hébergement de Bots Discord. Tous droits réservés.</p>
+    </footer>
+
+    <!-- JavaScript pour changer le texte -->
+    <script>
+        const slogans = [
+            "Hébergement rapide, sécurisé et optimisé pour tous tes bots Discord.",
+            "Des performances fiables pour des bots 24/7.",
+            "Gagne du temps et de l’énergie avec un hébergement de qualité.",
+            "Des serveurs dédiés pour tes bots les plus exigeants.",
+        ];
+
+        let currentSloganIndex = 0;
+        const textElement = document.getElementById('typewriter-text');
+        
+        function changeSlogan()
