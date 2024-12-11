@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui sommes-nous ? - Xylagen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animation pour le texte */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        h1, p {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Style pour les images */
+        .about-image {
+            animation: fadeIn 1.5s ease-out;
+            border-radius: 8px;
+        }
+
+        /* Style hover pour les liens */
+        a:hover {
+            color: #f59e0b;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white font-poppins">
+
+    <header class="py-8 text-center">
+        <h1 class="text-5xl font-bold text-yellow-400">Qui sommes-nous ?</h1>
+    </header>
+
+    <section class="px-6 md:px-16 lg:px-32 py-16 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-semibold text-indigo-400 mb-4">
+                    Une équipe passionnée à votre service
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Chez <span class="text-yellow-400 font-semibold">Xylagen</span>, nous sommes une équipe de passionnés de technologie, 
+                    déterminés à fournir le meilleur service d’hébergement pour vos bots Discord.
+                </p>
+                <p class="text-lg text-gray-300 mt-6 leading-relaxed">
+                    Depuis nos débuts, notre objectif a toujours été d’offrir une solution simple, rapide et efficace pour répondre 
+                    aux besoins de développeurs et de gestionnaires de communautés en quête de fiabilité.
+                </p>
+            </div>
+            <div>
+                <img src="https://undraw.co/api/illustrations/server_cluster.svg" alt="Équipe" class="about-image w-full">
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 md:px-16 lg:px-32 py-16 bg-gray-800">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-semibold text-yellow-400">Nos Valeurs</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <!-- Innovation -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Innovation</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Toujours à l’affût des dernières avancées technologiques, nous proposons des solutions modernes et performantes.
+                </p>
+            </div>
+            <!-- Fiabilité -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Fiabilité</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Nous mettons un point d’honneur à garantir un service disponible 24/7 avec un support technique réactif.
+                </p>
+            </div>
+            <!-- Accessibilité -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Accessibilité</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Que vous soyez débutant ou expert, nos offres s’adaptent à vos besoins et à votre budget.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 md:px-16 lg:px-32 py-16 text-center">
+        <h2 class="text-3xl font-semibold text-indigo-400">Envie d'en savoir plus ?</h2>
+        <p class="text-lg text-gray-300 mt-4">
+            Rejoignez-nous sur <a href="https://discord.com/invite/ton-serveur-discord" class="text-yellow-400 underline">notre serveur Discord</a> 
+            ou découvrez nos <a href="index.html" class="text-yellow-400 underline">offres</a>.
+        </p>
+    </section>
+
+    <footer class="bg-gray-700 py-6 text-center">
+        <p>&copy; 2024 Xylagen. Tous droits réservés.</p>
+        <div class="mt-4">
+            <a href="conditions.html" class="text-indigo-400 mx-2 hover:underline">Conditions</a>
+            <a href="politique.html" class="text-indigo-400 mx-2 hover:underline">Politique de confidentialité</a>
+        </div>
+    </footer>
+
+</body>
+</html>
