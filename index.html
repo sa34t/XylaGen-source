@@ -1,202 +1,135 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xylagen - Hébergement de Bots Discord</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Animation typewriter */
-        @keyframes typewriter {
-            0% {
-                width: 0;
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-
-        /* Appliquer l'animation au texte */
-        .typewriter {
-            display: inline-block;
-            overflow: hidden; /* Cache le texte excédentaire */
-            white-space: nowrap; /* Empêche le texte de se casser en plusieurs lignes */
-            border-right: 3px solid rgba(255, 255, 255, 0.75); /* Curseur de la machine à écrire */
-            width: 0;
-            animation: typewriter 3s steps(40) 1s forwards, blink-caret 0.75s step-end infinite;
-        }
-
-        /* Animation du curseur de la machine à écrire (clignotement) */
-        @keyframes blink-caret {
-            50% {
-                border-color: transparent;
-            }
-        }
-
-        /* Animation de fade-in pour les sections */
-        .animate-fade-up {
-            animation: fadeUp 1s ease-out;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Masquer l'élément au départ */
-        .hidden {
-            display: none;
-        }
-
-        /* Animation des cartes de plans (hover effect) */
-        .plan-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Animation des boutons */
-        .buy-button {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            padding: 12px 25px;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            background-color: #4F46E5;
-            color: white;
-            border-radius: 50px;
-            transition: all 0.4s ease-in-out;
-        }
-
-        .buy-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 300%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease-in-out;
-            transform: translateX(-50%) translateY(-100%);
-        }
-
-        .buy-button:hover::before {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .buy-button:hover {
-            transform: translateY(-5px);
-            background-color: #4338CA;
-        }
-
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="assets/css/styles.css"> <!-- Lien vers le fichier CSS -->
+            
 </head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white font-poppins">
 
-<body class="bg-gray-900 text-white font-sans">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 fixed top-0 left-0 w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/images/logo.png" alt="Logo" class="h-10 mr-3">
+                    <span class="text-xl font-bold text-white">Xylagen</span>
+                </a>
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+                    <a href="pages/quisommesnous.html"><i class="fas fa-users"></i> Qui sommes-nous ?</a>
+                    <a href="pages/status.html"><i class="fas fa-server"></i> Status</a>
+                </div>
+                <!-- Bouton Discord -->
+                <a href="https://discord.com/invite/ton-serveur-discord" class="discord-btn hidden md:flex">
+                    <i class="fab fa-discord"></i> Rejoindre Discord
+                </a>
+                <!-- Bouton Mobile -->
+                <button id="menuToggle" class="text-gray-300 focus:outline-none md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobileMenu" class="bg-gray-700 py-4 px-6 md:hidden">
+            <a href="index.html" class="block text-gray-300 hover:text-white mb-2"><i class="fas fa-home"></i> Accueil</a>
+            <a href="pages/quisommesnous.html" class="block text-gray-300 hover:text-white mb-2"><i class="fas fa-users"></i> Qui sommes-nous ?</a>
+            <a href="pages/status.html" class="block text-gray-300 hover:text-white mb-2"><i class="fas fa-server"></i> Status</a>
+            <a href="https://discord.com/invite/ton-serveur-discord" class="discord-btn block mt-4">
+                <i class="fab fa-discord"></i> Rejoindre Discord
+            </a>
+        </div>
+    </nav>
+
 
     <!-- Header -->
-    <header class="bg-gray-800 p-4">
-        <nav class="flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-white">Xylagen</a>
-            <ul class="flex space-x-6">
-                <li><a href="#services" class="hover:text-blue-400">Services</a></li>
-                <li><a href="#pricing" class="hover:text-blue-400">Tarifs</a></li>
-                <li><a href="#about" class="hover:text-blue-400">À propos</a></li>
-                <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="relative text-center py-32 mt-16">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://digital-learning-academy.com/wp-content/uploads/2018/04/Technology-GIF-downsized_large.gif" 
+                 alt="Server" 
+                 class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10">
+            <h1 class="text-6xl md:text-7xl font-bold text-yellow-400 animate__fadeInDown">
+                Bienvenue chez <span class="text-indigo-500">Xylagen</span>
+            </h1>
+            <p class="mt-6 text-xl md:text-2xl text-gray-300 animate__fadeInUp">
+                L’hébergement ultime pour vos bots Discord, rapide, sûr et efficace.
+            </p>
+            <a href="#tarifs" 
+               class="mt-8 inline-block bg-yellow-500 text-black font-semibold px-8 py-4 text-lg rounded hover:bg-yellow-600 transition">
+                Voir nos offres
+            </a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 h-screen text-center">
-        <div class="text-white animate-fade-up">
-            <h1 class="text-5xl font-bold animate-fade-up">
-                Héberge ton Bot Discord avec Xylagen
-            </h1>
-            <!-- Texte animé sous le titre -->
-            <p id="typewriter-text" class="mt-4 text-xl typewriter">Hébergement rapide, sécurisé et optimisé pour tous tes bots Discord.</p>
-            <!-- Section du bouton, placé en bas -->
-            <div class="mt-6 animate-fade-up">
-                <a href="#pricing" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-md text-lg hover:bg-blue-600 transition">Commencez maintenant</a>
-            </div>
+    <!-- À propos -->
+    <section id="about" class="py-16 px-6 text-center">
+        <h2 class="text-4xl font-semibold text-indigo-400">À propos de nous</h2>
+        <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+            Chez Xylagen, nous proposons un hébergement de bots Discord conçu pour offrir des performances optimales. 
+            Grâce à notre infrastructure robuste, vos bots restent opérationnels 24/7, avec des plans adaptés à tous les besoins.
+        </p>
+        <div class="mt-8">
+            <img src="https://undraw.co/api/illustrations/connected_world.svg" alt="About Us" class="mx-auto w-2/3 md:w-1/3">
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="p-10 bg-gray-800 animate-fade-up">
-        <h2 class="text-3xl font-bold text-center text-white">Nos Services</h2>
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Plan Gratuit -->
-            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
-                <h3 class="text-xl font-semibold">Plan Gratuit</h3>
-                <img src="https://media.giphy.com/media/l4FGr3jMdsNxl7Y7W/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
-                <p class="mt-4">Idéal pour les petits bots. Accès limité aux ressources, mais parfait pour débuter.</p>
-                <ul class="mt-4 text-sm">
-                    <li>Bot 24/7</li>
-                    <li>Support de base</li>
-                </ul>
-                <button class="buy-button mt-6">Choisir ce plan</button>
-            </div>
-
-            <!-- Plan Basique -->
-            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
-                <h3 class="text-xl font-semibold">Plan Basique</h3>
-                <img src="https://media.giphy.com/media/3o7btkZz3s5nXzV5Je/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
-                <p class="mt-4">Pour les bots plus puissants avec un meilleur temps de réponse et une gestion simplifiée.</p>
-                <ul class="mt-4 text-sm">
-                    <li>Bot 24/7</li>
-                    <li>Support Prioritaire</li>
-                    <li>Accès API amélioré</li>
-                </ul>
-                <button class="buy-button mt-6">Choisir ce plan</button>
-            </div>
-
-            <!-- Plan Premium -->
-            <div class="bg-gray-700 p-6 rounded-lg plan-card animate-fade-up">
-                <h3 class="text-xl font-semibold">Plan Premium</h3>
-                <img src="https://media.giphy.com/media/1wxx2L1e3XzJ7AGDJf/giphy.gif" alt="Bot GIF" class="mt-4 rounded-md">
-                <p class="mt-4">La solution ultime pour des bots à haute performance avec un support 24/7.</p>
-                <ul class="mt-4 text-sm">
-                    <li>Bot 24/7</li>
-                    <li>Support VIP</li>
-                    <li>Serveur dédié</li>
-                    <li>Accès complet aux API</li>
-                </ul>
-                <button class="buy-button mt-6">Choisir ce plan</button>
-            </div>
+<!-- Tarifs -->
+<section id="tarifs" class="bg-gray-800 py-16 px-6">
+    <h2 class="text-4xl font-semibold text-center text-yellow-400">Nos Tarifs</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <!-- Gratuit -->
+        <div class="bg-gray-700 rounded-lg p-6 shadow-lg text-center transform hover:scale-105 transition">
+            <h3 class="text-2xl font-semibold text-yellow-400">Gratuit</h3>
+            <img src="https://data.textstudio.com/output/sample/animated/3/8/2/5/free-1-5283.gif" alt="Free Plan" class="w-32 mx-auto mt-4">
+            <p class="mt-4">✔ 350MB Ram<br>✔ 70Mbps Uplink<br>✔ 1024MB SSD Storage <br>✔ Node.js/Python<br>❌ Support Prioritaire</p>
+            <p class="mt-4 text-yellow-500 font-bold">Gratuit</p> <!-- Prix Gratuit -->
+            <a href="pages/pay=free.html" class="mt-6 inline-block bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600 transition">Choisir</a>
         </div>
-    </section>
+        <!-- Basic -->
+        <div class="bg-gray-700 rounded-lg p-6 shadow-lg text-center transform hover:scale-105 transition">
+            <h3 class="text-2xl font-semibold text-yellow-400">Basic</h3>
+            <img src="https://cdn.dribbble.com/users/662779/screenshots/5122311/server.gif" alt="Basic Plan" class="w-32 mx-auto mt-4">
+            <p class="mt-4">✔ 1024MB Ram<br>✔ 100Mbps Uplink<br>✔ 5GB SSD Storage<br>✔ Node.js/python et Java<br>✔ Support Email</p>
+            <p class="mt-4 text-yellow-500 font-bold">€3.99 /mo</p> <!-- Prix du plan Basic -->
+            <a href="pages/paysuiteid=1747173771.html" class="mt-6 inline-block bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600 transition">Choisir</a>
+        </div>
+        <!-- Pro -->
+        <div class="bg-gray-700 rounded-lg p-6 shadow-lg text-center transform hover:scale-105 transition">
+            <h3 class="text-2xl font-semibold text-yellow-400">Pro</h3>
+            <img src="https://cdn.dribbble.com/users/662779/screenshots/5122311/server.gif" alt="Pro Plan" class="w-32 mx-auto mt-4">
+            <p class="mt-4">✔ 2048MB Memory<br>✔ 150Mbps Uplink<br>✔ 20GB SSD Storage<br>✔ Node.js/python et Java<br>✔ Support Premium <br>✔ Anti-ddos </p>
+            <p class="mt-4 text-yellow-500 font-bold">€5.99 /mo</p> <!-- Prix du plan Pro -->
+            <a href="pages/paysuiteid=1747173771.html" class="mt-6 inline-block bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600 transition">Choisir</a>
+        </div>
+    </div>
+</section>
+
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-6 text-center text-white">
-        <p>&copy; 2024 Xylagen - Hébergement de Bots Discord. Tous droits réservés.</p>
+    <footer class="bg-gray-700 py-6 text-center">
+        <p>&copy; 2024 Xylagen. Tous droits réservés.</p>
+        <div class="mt-4">
+            <a href="pages/conditions.html" class="text-indigo-400 mx-2 hover:underline">Conditions</a>
+            <a href="pages/politique.html" class="text-indigo-400 mx-2 hover:underline">Politique de confidentialité</a>
+        </div>
     </footer>
+    <script src="assets/js/plugins.js"></script>
 
-    <!-- JavaScript pour changer le texte -->
     <script>
-        const slogans = [
-            "Hébergement rapide, sécurisé et optimisé pour tous tes bots Discord.",
-            "Des performances fiables pour des bots 24/7.",
-            "Gagne du temps et de l’énergie avec un hébergement de qualité.",
-            "Des serveurs dédiés pour tes bots les plus exigeants.",
-        ];
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        let currentSloganIndex = 0;
-        const textElement = document.getElementById('typewriter-text');
-        
-        function changeSlogan()
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("active");
+        });
+    </script>
+</html>
