@@ -7,3 +7,4 @@ document.querySelectorAll('.plan').forEach(plan => {
     });
 });
 
+ <!-- By Metix -->
